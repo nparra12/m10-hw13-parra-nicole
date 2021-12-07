@@ -64,13 +64,23 @@ function getWeather(query) {
 
 
 // show error message when location isn't found
-function displayLocNotFound() {
+//function displayLocNotFound() {
   // clears any previous weather info
-  weatherContainer.innerHTML = "";
+  //weatherContainer.innerHTML = "";
   // create h2, add error msg, and add to page
-  var errMsg = document.createElement('h2')
-  errMsg.textContent = "Location not found"
-  weatherContainer.appendChild(errMsg)
+  //var errMsg = document.createElement('h2')
+  //errMsg.textContent = "Location not found"
+  //weatherContainer.appendChild(errMsg)
+//}
+
+//Convert a promise-based function (a function call with `.then`) to instead use `async/await`.
+async function displayLocNotFound(){
+  try{
+    const errMsg = await document.createElement('h2')
+  }catch(err){
+    errMsg.textContent = 'Location not found'
+    weatherContainer.appendChild(errMsg)
+  }
 }
 
 // updates HTML to display weather info
@@ -130,17 +140,21 @@ const addBreak = () =>{
     //weatherObj.actualTemp +
     //"° F"
   //weatherContainer.appendChild(temp)
-  
+
   //Convert a string concatenation to instead use template literals and string interpolation.
   const temp = document.createElement('p')
   temp.textContent = `Current: ${weatherObj.actualTemp}° F`
   weatherContainer.appendChild(temp)
 
   // "feels like" temperature
-  var feelsLikeTemp = document.createElement('p')
-  feelsLikeTemp.textContent = "Feels like: " +
-    weatherObj.feelsLikeTemp +
-    "° F"
+  //var feelsLikeTemp = document.createElement('p')
+  //feelsLikeTemp.textContent = "Feels like: " +
+    //weatherObj.feelsLikeTemp +
+   // "° F"
+  //weatherContainer.appendChild(feelsLikeTemp)
+
+  const feelsLikeTemp = document.createElement('p')
+  feelsLikeTemp.textContent = `Feels like: ${weatherObj.feelsLikeTemp}° F`
   weatherContainer.appendChild(feelsLikeTemp)
 
   addBreak()
@@ -153,7 +167,8 @@ const addBreak = () =>{
       {
         hour: 'numeric',
         minute: '2-digit'
-      }
+        }
     )
   weatherContainer.appendChild(updatedAt)
+
 }
