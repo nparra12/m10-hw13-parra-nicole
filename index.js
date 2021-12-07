@@ -30,9 +30,7 @@ function getWeather(query) {
   // return the fetch call which returns a promise
   // allows us to call .then on this function
   return fetch(
-    'https://api.openweathermap.org/data/2.5/weather?q=' +
-    query +
-    '&units=imperial&appid=6efff70fe1477748e31c17d1c504635f'
+    `https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&appid=6efff70fe1477748e31c17d1c504635f`
   )
     .then(function(res) {
       return res.json()
@@ -99,6 +97,8 @@ const addBreak = () =>{
   placeName.textContent = weatherObj.place
   weatherContainer.appendChild(placeName)
 
+
+
   // map link element based on lat/long
   var whereLink = document.createElement('a')
   whereLink.textContent = "Click to view map"
@@ -125,10 +125,15 @@ const addBreak = () =>{
   addBreak()
 
   // current temperature
-  var temp = document.createElement('p')
-  temp.textContent = "Current: " +
-    weatherObj.actualTemp +
-    "° F"
+  //var temp = document.createElement('p')
+  //temp.textContent = "Current: " +
+    //weatherObj.actualTemp +
+    //"° F"
+  //weatherContainer.appendChild(temp)
+  
+  //Convert a string concatenation to instead use template literals and string interpolation.
+  const temp = document.createElement('p')
+  temp.textContent = `Current: ${weatherObj.actualTemp}° F`
   weatherContainer.appendChild(temp)
 
   // "feels like" temperature

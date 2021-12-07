@@ -26,7 +26,7 @@ When converting from ES5 to ES6+, you will need to do each of the following at l
 1. Convert a `var` declaration to `const` or `let` where appropriate. -- done!!
 1. Convert a promise-based function (a function call with `.then`) to instead use `async/await`.
 1. Convert a `function` declaration into a arrow function. --done!!
-1. Convert a string concatenation to instead use template literals and string interpolation.
+1. Convert a string concatenation to instead use template literals and string interpolation. --done!!
 1. Convert some object-related code to use ES6 destructuring.
 
 You are **NOT** required to convert the entire `index.js` file to use ES6, although you may if you wish. To receive full credit, you only have to use each of the above features once in your submission. All tests should pass to indicate no changes to functionality of the assignment.
