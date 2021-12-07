@@ -42,7 +42,9 @@ function getWeather(query) {
       var iconUrl = 'https://openweathermap.org/img/wn/' +
         data.weather[0].icon +
         '@2x.png'
-      var description = data.weather[0].description
+        
+      const description = data.weather[0].description
+
       var actualTemp = data.main.temp
       var feelsLikeTemp = data.main.feels_like
       var place = data.name + ", " + data.sys.country
