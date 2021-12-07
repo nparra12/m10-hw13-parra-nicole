@@ -21,6 +21,8 @@ formEl.onsubmit = function(e) {
   inputEl.value = ""
 }
 
+
+
 // calls the OpenWeather API and returns an object of weather info
 function getWeather(query) {
   // default search to USA
@@ -42,9 +44,7 @@ function getWeather(query) {
       var iconUrl = 'https://openweathermap.org/img/wn/' +
         data.weather[0].icon +
         '@2x.png'
-        
       const description = data.weather[0].description
-
       var actualTemp = data.main.temp
       var feelsLikeTemp = data.main.feels_like
       var place = data.name + ", " + data.sys.country
@@ -63,6 +63,8 @@ function getWeather(query) {
     })
 }
 
+
+
 // show error message when location isn't found
 function displayLocNotFound() {
   // clears any previous weather info
@@ -79,11 +81,18 @@ function displayWeatherInfo(weatherObj) {
   weatherContainer.innerHTML = "";
 
   // inserts a linebreak <br> to weather section tag
-  function addBreak() {
-    weatherContainer.appendChild(
-      document.createElement('br')
-    )
-  }
+  //function addBreak() {
+    //weatherContainer.appendChild(
+     // document.createElement('br')
+    //)
+ // }
+
+ //Convert a `function` declaration into a arrow function.
+const addBreak = () =>{
+  weatherContainer.appendChild(
+     document.createElement('br')
+  )}
+
 
   // weather location element
   var placeName = document.createElement('h2')
@@ -98,7 +107,12 @@ function displayWeatherInfo(weatherObj) {
   weatherContainer.appendChild(whereLink)
 
   // weather icon img
-  var icon = document.createElement('img')
+  //var icon = document.createElement('img')
+  //icon.src = weatherObj.iconUrl
+  //weatherContainer.appendChild(icon)
+
+  // !! Convert a `var` declaration to `const`
+  const icon = document.createElement(`img`)
   icon.src = weatherObj.iconUrl
   weatherContainer.appendChild(icon)
 

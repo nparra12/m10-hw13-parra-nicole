@@ -23,9 +23,9 @@ Your assignment is to translate the ES5 JavaScript code in `index.js` to use ES6
 
 When converting from ES5 to ES6+, you will need to do each of the following at least once:
 
-1. Convert a `var` declaration to `const` or `let` where appropriate.
+1. Convert a `var` declaration to `const` or `let` where appropriate. -- done!!
 1. Convert a promise-based function (a function call with `.then`) to instead use `async/await`.
-1. Convert a `function` declaration into a arrow function.
+1. Convert a `function` declaration into a arrow function. --done!!
 1. Convert a string concatenation to instead use template literals and string interpolation.
 1. Convert some object-related code to use ES6 destructuring.
 
