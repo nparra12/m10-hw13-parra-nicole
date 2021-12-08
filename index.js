@@ -38,23 +38,28 @@ function getWeather(query) {
     .then(function(data) {
       // location not found, throw error/reject promise
       if (data.cod === "404") throw new Error('location not found')
+
+
       // create weather icon URL
-      var iconUrl = 'https://openweathermap.org/img/wn/' +
-        data.weather[0].icon +
-        '@2x.png'
-      const description = data.weather[0].description
-      var actualTemp = data.main.temp
-      var feelsLikeTemp = data.main.feels_like
-      var place = data.name + ", " + data.sys.country
+      //Convert some object-related code to use ES6 destructuring.
+      const {name} = data
+      const {icon,description} = data.weather[0]
+      const {feels_like} = data.main
+      const actualTemp = data.main.temp
+      const iconUrl = 'https://openweathermap.org/img/wn/' + icon +'@2x.png'
+      const place = name + ", " + data.sys.country
+      const updatedAt = new Date(data.dt * 1000)
+
+
       // create JS date object from Unix timestamp
-      var updatedAt = new Date(data.dt * 1000)
+      //var updatedAt = new Date(data.dt * 1000)
       // this object is used by displayWeatherInfo to update the HTML
       return {
         coords: data.coord.lat + ',' + data.coord.lon,
         description: description,
         iconUrl: iconUrl,
         actualTemp: actualTemp,
-        feelsLikeTemp: feelsLikeTemp,
+        feelsLikeTemp: feels_like,
         place: place,
         updatedAt: updatedAt
       }
@@ -64,6 +69,7 @@ function getWeather(query) {
 
 
 // show error message when location isn't found
+
 //function displayLocNotFound() {
   // clears any previous weather info
   //weatherContainer.innerHTML = "";
@@ -71,16 +77,18 @@ function getWeather(query) {
   //var errMsg = document.createElement('h2')
   //errMsg.textContent = "Location not found"
   //weatherContainer.appendChild(errMsg)
-//}
+//}//
 
 //Convert a promise-based function (a function call with `.then`) to instead use `async/await`.
-async function displayLocNotFound(){
+async function displayLocNotFound() {
   try{
-    const errMsg = await document.createElement('h2')
-  }catch(err){
-    errMsg.textContent = 'Location not found'
-    weatherContainer.appendChild(errMsg)
-  }
+     // clears any previous weather info
+  weatherContainer.innerHTML = "";
+  // create h2, add error msg, and add to page
+  const errMsg = await document.createElement('h2')
+  errMsg.textContent = "Location not found"
+  weatherContainer.appendChild(errMsg)
+  }catch(err){}
 }
 
 // updates HTML to display weather info
